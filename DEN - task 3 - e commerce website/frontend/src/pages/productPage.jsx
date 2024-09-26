@@ -4,6 +4,8 @@ import { HomeContext } from '../context/HomeContext'
 import { useParams } from 'react-router-dom'
 import Breadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 import ProductDisplay from '../components/productDisplay/ProductDisplay'
+import DescriptionBox from '../components/descriptionBox/DescriptionBox';
+import RelatedProducts from '../components/relatedProducts/RelatedProducts'
 
 const ProductPage = () => {
     const {all_product} = useContext(HomeContext)
@@ -14,6 +16,8 @@ const ProductPage = () => {
         <div>
             <Breadcrumbs product={product} />
             <ProductDisplay product={product} />
+            <DescriptionBox />
+            <RelatedProducts />
 
         </div>
     )

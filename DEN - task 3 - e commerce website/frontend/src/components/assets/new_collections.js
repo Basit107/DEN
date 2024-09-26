@@ -5,7 +5,7 @@ import p3_img from "./product5_redmipad.jpg";
 
 let new_collections = [
   {
-    id: 5,
+    id: 6,
     name: "Microsoft Surface Pro",
     category: "tablet",
     image: p1_img,
@@ -13,7 +13,7 @@ let new_collections = [
     old_price: 1200.5,
   },
   {
-    id: 6,
+    id: 7,
     name: "Apple Ipad tenth Generation",
     category: "mobile",
     image: p2_img,
@@ -21,7 +21,7 @@ let new_collections = [
     old_price: 1000.5,
   },
   {
-    id: 7,
+    id: 5,
     name: "Redmi Cheap Pad",
     category: "tablet",
     image: p3_img,
