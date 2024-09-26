@@ -4,7 +4,7 @@ import p3_img from './product3_redminote12.jpg'
 import p4_img from './product4_redminote115G.jpg'
 import p5_img from './product5_redmipad.jpg'
 import p6_img from "./product6_msSurfacepro.jpg";
-// import p7_img from "./product_7.png";
+import p7_img from "./product7_Apple iPad tenth-generation.jpg";
 // import p8_img from "./product_8.png";
 // import p9_img from "./product_9.png";
 // import p10_img from "./product_10.png";
@@ -67,28 +67,28 @@ let all_product = [
   },
   {
     id: 5,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Redmi Cheap Pad",
     category: "tablet",
     image: p5_img,
-    new_price: 85.0,
-    old_price: 120.5,
+    new_price: 1005.0,
+    old_price: 1200.5,
   },
   {
     id: 6,
-    name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
+    name: "Micrsoft Surface pro",
     category: "mobile",
     image: p6_img,
-    new_price: 85.0,
-    old_price: 120.5,
+    new_price: 805.0,
+    old_price: 1000.5,
   },
-  // {
-  //   id: 7,
-  //   name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",
-  //   category: "women",
-  //   image: p7_img,
-  //   new_price: 85.0,
-  //   old_price: 120.5,
-  // },
+  {
+    id: 7,
+    name: "Apple Ipad tenth Generation",
+    category: "tablet",
+    image: p7_img,
+    new_price: 850.0,
+    old_price: 1020.5,
+  },
   // {
   //   id: 8,
   //   name: "Striped Flutter Sleeve Overlap Collar Peplum Hem Blouse",

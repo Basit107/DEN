@@ -83,8 +83,9 @@
 
 .copyright hr {
     border: none;
-    border-top: 1px solid #444;
+    border-top: 4px solid #444;
     margin-bottom: 10px;
+    width: 837px;
 }
 
 .copyright p {
