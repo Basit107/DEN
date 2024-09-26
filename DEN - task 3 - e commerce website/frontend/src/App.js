@@ -2,10 +2,14 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import { BrowserRouter, Routes, route, Route } from 'react-router-dom'
-import categoryPage from "./pages/categoryPage"
-import loginSignUp from "./pages/loginSignUp"
-import cart from "./pages/cart"
-
+import CategoryPage from "./pages/CategoryPage"
+import ProductPage from './pages/ProductPage';
+import Cart from "./pages/Cart"
+import Home from "./pages/Home";
+import Footer from './components/footer/Footer';
+import HomeCategory from './pages/HomeCategory';
+import banner1 from './components/assets/banner1.png';
+import Loginsignup from './pages/LoginSignUp';
 
 function App() {
   return (
@@ -13,16 +17,17 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Routes>
-          <Route path="/" element={<home/>}/>
-          <Route path="/mobile" element={<categoryPage category="mobile" />}/>
-          <Route path="/tablets" element={<categoryPage category="tablet" />}/>
-          <Route path="/accessories" element={<categoryPage category="accessory" />}/>
-          <Route path="/product" element={<productPage/>}>
-            <Route path=':productId' element={<productPage/>}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/mobile" element={<HomeCategory banner={banner1} category="mobile" />}/>
+          <Route path="/tablets" element={<HomeCategory banner={banner1} category="tablet" />}/>
+          <Route path="/accessories" element={<HomeCategory banner={banner1} category="accessory" />}/>
+          <Route path="/product" element={<ProductPage/>}>
+            <Route path=':productId' element={<ProductPage/>}/>
           </Route>
-          <Route path='/cart' element={<cart/>}/>
-          <Route path='/login' element={<loginSignUp/>}/>
+          <Route path='/cart' element={<Cart/>}/>
+          <Route path='/login' element={<Loginsignup />}/>
         </Routes>
+        <Footer />
         </BrowserRouter>
     </div>
   );

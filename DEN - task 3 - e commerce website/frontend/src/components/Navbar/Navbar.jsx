@@ -15,10 +15,10 @@ const Navbar = () => {
                 <p>DIGISHOP</p>
             </div>
             <ul className="nav-menu">
-                <li onClick={() => {setMenu("home")}}><Link to="/">Home</Link> {menu==="home"?<hr/>:<></>}</li>
-                <li onClick={() => {setMenu("mobile")}}><Link to ="/mobile">Mobile Phones</Link>{menu==="mobile"?<hr/>:<></>}</li>
-                <li onClick={() => {setMenu("tablets")}}><Link to="/tablets">Tablets</Link> {menu==="tablets"?<hr/>:<></>}</li>
-                <li onClick={() => {setMenu("accessories")}}><Link to="/accessories">Accessories</Link> {menu==="accessories"?<hr/>:<></>}</li>
+                <li onClick={() => {setMenu("home")}}><Link style={{textDecoration: 'none'}} to="/">Home</Link> {menu==="home"?<hr/>:<></>}</li>
+                <li onClick={() => {setMenu("mobile")}}><Link style={{textDecoration: 'none'}} to ="/mobile">Mobile Phones</Link>{menu==="mobile"?<hr/>:<></>}</li>
+                <li onClick={() => {setMenu("tablets")}}><Link style={{textDecoration: 'none'}} to="/tablets">Tablets</Link> {menu==="tablets"?<hr/>:<></>}</li>
+                <li onClick={() => {setMenu("accessories")}}><Link style={{textDecoration: 'none'}} to="/accessories">Accessories</Link> {menu==="accessories"?<hr/>:<></>}</li>
             </ul>
 
             <div className="nav-login-cart">

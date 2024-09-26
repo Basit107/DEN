@@ -1,0 +1,111 @@
+/* General styling for the footer section */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e8dcdc;
+    color: black;
+    padding: 20px 40px;
+    border-top: 5px solid black; /* Top border for emphasis */
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+/* Styling for the logo and text in the footer */
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.footer-logo p {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+/* Styling for the footer links */
+.footer-links {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links li {
+    cursor: pointer;
+    font-size: 18px;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.footer-links li:hover {
+    color: #ff4d4f; /* Change color on hover */
+}
+
+/* Styling for social icons */
+.footer-social-icons-container {
+    margin-left: 10px;
+    gap: 15px;
+    padding: 25px;
+    flex-direction: row;
+}
+
+.footer-social-icon {
+    display: flex;
+    margin-left: 10px;
+    gap: 15;
+    flex-direction: row;
+}
+
+.footer-social-icons-container img {
+    align-items: center;
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.footer-social-icons-container img:hover {
+    transform: scale(1.2); /* Slight zoom on hover */
+}
+
+.copyright {
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.copyright hr {
+    border: none;
+    border-top: 1px solid #444;
+    margin-bottom: 10px;
+}
+
+.copyright p {
+    font-size: 16px;
+    color: black;
+}
+
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-links {
+        margin: 20px 0;
+    }
+
+    .footer-social-icons-container {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
