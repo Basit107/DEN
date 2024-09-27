@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './CSS/cart.css';
 import { CartContext } from '../context/CartContext'; // Assuming you have a context for cart data
+import CartItems from '../components/cartItems/CartItems'
 
 const Cart = () => {
     // const { cartItems, removeItem, incrementQuantity, decrementQuantity } = useContext(CartContext);
@@ -12,6 +13,7 @@ const Cart = () => {
     return (
         <div className="cart">
             <h1>Your Cart</h1>
+            <CartItems />
             {/* {cartItems.length === 0 ? (
                 <p>Your cart is empty</p>
             ) : (
