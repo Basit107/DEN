@@ -85,7 +85,7 @@
     border: none;
     border-top: 4px solid #444;
     margin-bottom: 10px;
-    width: 837px;
+    width: auto;
 }
 
 .copyright p {
@@ -97,16 +97,49 @@
 /* Responsive styling for smaller screens */
 @media (max-width: 768px) {
     .footer {
+        position: relative;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: baseline;
+        gap: 20px;
+    }
+
+    .footer-logo {
+        align-items: end;
+        gap: 10px;
     }
 
     .footer-links {
         margin: 20px 0;
+        font-size: 14px;
+    }
+
+    .footer-links li {
+        font-size: 14px;
     }
 
     .footer-social-icons-container {
         margin-left: 0;
         margin-top: 10px;
+    }
+
+    .footer-logo img {
+        width: 40px;
+    }
+
+    .footer-social-icon img {
+        width: 22px;
+    }
+
+    .copyright p{
+        font-size: 13px;
+        align-items: baseline;
+        text-align: start;
+    }
+
+    .copyright hr {
+        width: auto;
+        margin-bottom: 5px;
+        margin-top: 5px;
+
     }
 }

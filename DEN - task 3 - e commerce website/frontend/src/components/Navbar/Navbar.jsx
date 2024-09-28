@@ -1,14 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import './Navbar.css'
 import logo from '../assets/cart_icon.png'
 import cart_icon from '../assets/cart_cross.png'
 import { Link } from 'react-router-dom';
 import { HomeContext } from '../../context/HomeContext';
+import dropdown_icon from '../assets/nav_dropdown.png'
 
 
 const Navbar = () => {
     const [menu, setMenu] = useState("home");
     const {getTotalCartitems} = useContext(HomeContext);
+    const menuRef = useRef();
+
+    const dropdown_toggle = (e) => {
+        menuRef.current.classList.toggle('nav-menu-visible');
+        e.target.classList.toggle('open');
+    }
 
     return (
         <div className='navbar'>
@@ -16,7 +23,8 @@ const Navbar = () => {
                 <img src={logo} alt="" />
                 <p>DIGISHOP</p>
             </div>
-            <ul className="nav-menu">
+            <img className='nav-dropdown' onClick={dropdown_toggle} src={dropdown_icon} alt="" />
+            <ul ref={menuRef} className="nav-menu">
                 <li onClick={() => {setMenu("home")}}><Link style={{textDecoration: 'none'}} to="/">Home</Link> {menu==="home"?<hr/>:<></>}</li>
                 <li onClick={() => {setMenu("mobile")}}><Link style={{textDecoration: 'none'}} to ="/mobile">Mobile Phones</Link>{menu==="mobile"?<hr/>:<></>}</li>
                 <li onClick={() => {setMenu("tablets")}}><Link style={{textDecoration: 'none'}} to="/tablets">Tablets</Link> {menu==="tablets"?<hr/>:<></>}</li>
@@ -25,8 +33,10 @@ const Navbar = () => {
 
             <div className="nav-login-cart">
                 <Link to="/login"><button>Login</button></Link>
-                <Link to="/cart"><img src={cart_icon} alt=''/></Link>
-                <div className="nav-cart-count">{getTotalCartitems()}</div>
+                <div className="nav-cart-wrapper">
+                    <Link to="/cart"><img src={cart_icon} alt=''/></Link>
+                    <div className="nav-cart-count">{getTotalCartitems()}</div>
+                </div>
             </div>
         </div>
     )
