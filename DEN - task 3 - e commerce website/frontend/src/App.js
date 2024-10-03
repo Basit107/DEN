@@ -1,8 +1,8 @@
 //import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { BrowserRouter, Routes, route, Route } from 'react-router-dom'
-import CategoryPage from "./pages/CategoryPage"
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import CategoryPage from "./pages/CategoryPage"
 import ProductPage from './pages/ProductPage';
 import Cart from "./pages/Cart"
 import Home from "./pages/Home";

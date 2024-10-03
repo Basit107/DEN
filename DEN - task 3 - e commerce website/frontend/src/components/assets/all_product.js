@@ -1,5 +1,5 @@
 import p1_img from "./product1.jpg";
-import p2_img from "./product2.jpg";
+// import p2_img from "./product2.jpg";
 import p3_img from './product3_redminote12.jpg'
 import p4_img from './product4_redminote115G.jpg'
 import p5_img from './product5_redmipad.jpg'

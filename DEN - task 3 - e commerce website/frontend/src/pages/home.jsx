@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Exclusive from '../components/exclusive/Exclusive';
 import Popular from '../components/popular/Popular';
 import Offers from '../components/offers/Offers';
