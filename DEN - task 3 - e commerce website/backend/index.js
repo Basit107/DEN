@@ -9,12 +9,16 @@ const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
 
+const dotenv = require("dotenv").configure();
+const URI = process.env.URI;
+const secret_sault = process.env.secret_sault;
+
 app.use(express.json());
 app.use(cors());
 
 
 // Database connection with MongoDB
-mongoose.connect("mongodb+srv://basit107:RFbankJ90Y97nKvx@cluster0.bfpts.mongodb.net/e-commerce")
+mongoose.connect("mongodb+srv://" + URI)
 
 
 // API Creation
@@ -22,15 +26,6 @@ app.get("/", (request, response) => {
   response.send("Express App is Running.")
 })
 
-app.listen(port, (error) => {
-  if (!error) {
-    console.log("Server Running on port: " + port);
-  }
-  else {
-    console.log("Error: " + error);
-  }
-
-})
 
 // Image Storage engine
 const storage = multer.diskStorage({
@@ -142,15 +137,106 @@ app.get('/allproducts', async (request, response) => {
   
 })
 
+// Schema creating For User Model
+
+const Users = mongoose.model('Users', {
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+    unique: true,
+  },
+  password:{
+    type: String,
+  },
+  cartData: {
+    type: Object,
+  },
+  date: {
+    type: Date,
+    default: Date.now,
+  }
+})
 
 
+//  Creating End Point to Register User
+
+app.post('/signup', async (request, response) => {
+
+  let check = await Users.findOne({email:request.body.email});
+
+  if (check) {
+    return response.status(400)
+    .json({success:false, errors:"Existing User Found with the same Email Address Found."})
+  }
+
+  let cart = {};
+  for (let i = 0; i < 300; i++) {
+    cart[i] = 0;    
+  }
+
+  const user = new Users({
+    name:request.body.username,
+    email:request.body.email,
+    password:request.body.password,
+    cartData:cart,
+  });
+
+  await user.save();
+
+  const data = {
+    user: {
+      id:user.id
+    }
+  }
+
+  const token = jwt.sign(data, secret_sault);
+  response.json({success:true, token});
+
+})
 
 
+// End Point For User Login
+app.post('/login', async (request, response) => {
+  let user = await Users.findOne({email:request.body.email});
+
+  if (user) {
+    const passwordCompare = request.body.password === user.password;
+
+    if (passwordCompare) {
+      const data = {
+        user: {
+          id:user.id
+        }
+      }
+
+      const token = jwt.sign(data, secret_sault);
+      response.json({success:true, token});
+    }
+
+    else {
+      response.json({success:false, errors:"Wrong Password Or Email Address"});
+    }
+  }
+
+  else {
+    response.json({success:false, errors: "Wrong password Or Email Address"});
+  }
+})
 
 
+// Checks server runnung Or Not
 
+app.listen(port, (error) => {
+  if (!error) {
+    console.log("Server Running on port: " + port);
+  }
+  else {
+    console.log("Error: " + error);
+  }
 
-
+})
 
 
 
