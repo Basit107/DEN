@@ -1,4 +1,5 @@
 // index.js
+
 const port = 4000;
 const express = require("express");
 const app = express();
@@ -6,12 +7,13 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken")
 const multer = require("multer");
 const path = require("path");
-const cors = require("cors");
+const cors = require('cors');
 const { type } = require("os");
 
-const dotenv = require("dotenv").configure();
+const dotenv = require("dotenv").config()
 const URI = process.env.URI;
 const secret_sault = process.env.secret_sault;
+
 
 app.use(express.json());
 app.use(cors());
@@ -223,6 +225,56 @@ app.post('/login', async (request, response) => {
   else {
     response.json({success:false, errors: "Wrong password Or Email Address"});
   }
+})
+
+
+// End Point For NewProducts Data
+app.get('/newproducts', async (request, response) => {
+  let products = await Product.find({});
+  let newproducts = products.slice(1).slice(-8);
+  console.log("New Products Have been Fetched.");
+  response.send(newproducts);
+  
+})
+
+//  End Point For Popular Products
+app.get('/popularproducts', async (request, response) => {
+  let products = await Product.find({category:"mobile"});
+  let popularproducts = products.slice(0, 4);
+  console.log("Popular Products Have been fetched");
+  response.send(popularproducts);
+  
+})
+
+
+// Creating middleware to fetch user
+    const fetchUser = async (request, response, next) => {
+      const token = request.header('auth-token');
+
+      if (!token) {
+        response.status(401).send({errors:"Please authenticate using valid token. Login/signup first."})
+      }
+      else {
+        try {
+          const data = jwt.verify(token, secret_sault);
+          request.user = data.user;
+          next();
+        } catch (error) {
+            response.status(401).send({errors: "Please Autheticate using a Valid Token"})
+        }
+      }
+    }
+
+
+// Creating End Point for adding products in cartdata
+app.post('/addtocart', fetchUser, async (request, response) => {
+  let userData = await Users.findOne({_id:request.user.id});
+  userData.cartData[request.body.itemId] =+ 1;
+
+  await Users.findOneAndUpdate({_id:request.user.id}, {cartData:userData.cartData});
+
+  response.send("Product Added To Cart")
+  
 })
 
 
