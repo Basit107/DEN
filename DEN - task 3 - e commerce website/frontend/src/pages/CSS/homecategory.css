@@ -48,11 +48,18 @@
 
 /* Container for the products */
 .homecategory-products {
-    display: flex;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 40px; /* Space between product items */
+    /* display: flex;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); Responsive grid */
+    columns: 300px;
+    gap: 30px; /* Space between product items */
     justify-items: center;
     padding: 30px;
+    padding-top: 23px;
+}
+
+.item {
+    padding-bottom: 21px;
+    padding-top: 30px;
 }
 
 .homeCategory-loadmore {
