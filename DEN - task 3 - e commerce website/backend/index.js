@@ -8,7 +8,6 @@ const jwt = require("jsonwebtoken")
 const multer = require("multer");
 const path = require("path");
 const cors = require('cors');
-const { type } = require("os");
 
 const dotenv = require("dotenv").config()
 const URI = process.env.URI;
@@ -268,6 +267,9 @@ app.get('/popularproducts', async (request, response) => {
 
 // Creating End Point for adding products in cartdata
 app.post('/addtocart', fetchUser, async (request, response) => {
+
+  console.log("Product Added To Cart: ", request.body.itemId);
+
   let userData = await Users.findOne({_id:request.user.id});
   userData.cartData[request.body.itemId] =+ 1;
 
@@ -278,8 +280,35 @@ app.post('/addtocart', fetchUser, async (request, response) => {
 })
 
 
-// Checks server runnung Or Not
+// Creating Endpoint to remove product from CartData
+app.post('/removefromcart', fetchUser, async (request, response) => {
 
+  console.log("Product Removed From Cart: ", request.body.itemId);
+  
+
+  let userData = await Users.findOne({_id:request.user.id});
+  
+  if (userData.cartData[request.body.itemId] > 0) {
+    userData.cartData[request.body.itemId] -= 1;
+    await Users.findOneAndUpdate({_id:request.user.id}, {cartData:userData.cartData});
+    response.send("Product Removed From Cart")
+  }
+})
+
+
+
+// Creating API endpoint To Get cartData.
+app.post('/getcart', fetchUser, async (request, response) => {
+  console.log("Cart Data Retrieved.");
+
+  let userData = await Users.findOne({_id:request.user.id});
+  response.json(userData.cartData);
+  
+})
+
+
+
+// Checks server runnung Or Not
 app.listen(port, (error) => {
   if (!error) {
     console.log("Server Running on port: " + port);
